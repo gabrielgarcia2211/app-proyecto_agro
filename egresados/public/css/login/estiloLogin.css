@@ -1,0 +1,132 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px; 
+}
+
+.login-box-body, .register-box-body {
+  background: #fff;
+  padding: 20px;
+  color: #444;
+  border-top: 0;
+  color: #666;
+}
+
+.login-links {
+  border-top: 3px solid #dd4b39;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-xs-4 {
+  width: 33%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.btn-danger {
+  background-color: #dd4b39;
+  border-color: #d73925;
+}
+
+.slider-wrap {
+  width: 100%;
+  height:100%;
+  position: absolute;
+}
+.single-slide {
+  width: 100%;
+    height: 100%;
+    position: absolute;
+  opacity: 0;
+  animation: slider-animation;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  background-size: cover;
+}
+
+#slide-1 {background-image: url(https://conceptodefinicion.de/wp-content/uploads/2018/01/Ingenier%C3%ADa_Agroindustrial.jpg);}
+#slide-2 {animation-delay: 5s; background-image: url(https://www.upb.edu.co/ss/Satellite?blobcol=urldata&blobheadername1=Content-Type&blobheadername2=Content-Disposition&blobheadername3=MDT-Type&blobheadervalue1=image%2Fjpeg&blobheadervalue2=attachment%3B+filename%3D%22BECA-1.jpg%22%3Bfilename*%3DUTF-8%27%27BECA-1.jpg&blobheadervalue3=abinary%3B+charset%3DUTF-8&blobkey=id&blobtable=MungoBlobs&blobwhere=1461637608657&ssbinary=true);}
+#slide-3 {animation-delay: 10s; background-image: url(https://facultades.usil.edu.pe/ingenieria/wp-content/uploads/2019/07/ingenieria-agroindustrial.jpg);}
+#slide-4 {animation-delay: 15s; background-image: url(https://img.interempresas.net/fotos/2000369.jpeg);}
+#slide-5 {animation-delay: 20s; background-image: url(https://unisalia.com/storage/2018/11/ingieneria-agroindustrial_opt.jpg);}
+
+@keyframes slider-animation {
+    
+0% {
+    opacity: 0;
+}
+6% {
+    opacity: 1;
+}
+24% {
+    opacity: 1;
+}
+30% {
+    opacity: 0;
+}
+100% {
+    opacity: 0;
+}
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-danger {
+  color: #a94442;
+}
+
+.col-xs-12 {
+  width: 100%;
+}
