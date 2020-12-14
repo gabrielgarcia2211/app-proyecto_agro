@@ -284,4 +284,27 @@ class EstudianteController extends Controller
 
     }
 
+    public function traerArchivo($name)
+    {
+        $filename = $name['archivo'];
+
+        $dir = '/';
+        $recursive = true; // Get subdirectories also?
+        $contents = collect(Storage::disk('google')->listContents($dir, $recursive));
+
+        $file = $contents
+            ->where('type', '=', 'file')
+            ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+            ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+            ->first(); // there can be duplicate file names!
+
+
+        return [$file['name'] => Storage::disk('google')->url($file['path'])];
+
+
+
+
+
+    }
+
 }

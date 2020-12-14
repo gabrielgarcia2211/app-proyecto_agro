@@ -42,8 +42,8 @@ class HomeController extends Controller
                 $viewTesis = $this->traerArchivo($name);
                 return view('dashboard.estudiante.index')->with(compact('dataEstudiante','viewTesis','name'));
             }else{
-                $viewTesis = null;
-                $name = null;
+                $viewTesis = "";
+                $name = "" ;
                 return view('dashboard.estudiante.index')->with(compact('dataEstudiante','viewTesis','name'));
             }
 
