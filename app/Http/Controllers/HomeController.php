@@ -37,11 +37,13 @@ class HomeController extends Controller
             $codigo = auth()->user()->codigo;
             $name = Hoja_Vida::join('users', 'hoja__vidas.codigo','=','users.codigo')->where('users.codigo','=',$codigo)->get()->first();
             $dataEstudiante  = DB::select("SELECT * FROM users u INNER JOIN personas p ON u.documento=p.documento INNER JOIN  estudiantes e  ON e.documento=u.documento WHERE u.codigo = $codigo");
-            $viewTesis = $this->traerArchivo($name);
-            if(isset($name)){
 
+            if(isset($name)){
+                $viewTesis = $this->traerArchivo($name);
                 return view('dashboard.estudiante.index')->with(compact('dataEstudiante','viewTesis','name'));
             }else{
+                $viewTesis = null;
+                $name = null;
                 return view('dashboard.estudiante.index')->with(compact('dataEstudiante','viewTesis','name'));
             }
 
