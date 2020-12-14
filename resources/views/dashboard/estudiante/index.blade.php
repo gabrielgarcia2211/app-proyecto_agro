@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
 
-                                <form action="{{route('estudiante.autorizar')}}" id="formu-auto"  method="POST" onchange="return autorizar({{$name['autorizar']}})" >
+                                <form action="{{route('estudiante.autorizar')}}" id="formu-auto"  method="POST" onchange="return autorizar({{isset($name['autorizar'])?$name['autorizar']:""}})" >
                                         @csrf
                                     @if(empty($name))
                                     <div class="form-group form-check">
