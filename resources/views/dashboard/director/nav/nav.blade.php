@@ -91,13 +91,13 @@
                                 <span class="nav-link-text">Listado de eventos</span>
                             </a>
                         </li>
-                        <!--<li class="nav-item">
-                            <a  class="nav-link" href="#">
+                        <li class="nav-item">
+                            <a  class="nav-link" href="{{route('admin.noticia')}}">
                                 <i class="fas fa-tv"></i>
                                 <span class="nav-link-text">Publicar noticia</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a  class="nav-link" href="#">
                                 <i class="fas fa-newspaper"></i>
                                 <span class="nav-link-text">Noticias publicadas</span>

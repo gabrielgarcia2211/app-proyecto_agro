@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 Use Alert;
 use App\Empresa;
 use App\Evento;
+use App\Noticia;
 use App\Persona;
 use App\Saber11;
 use App\SaberPro;
@@ -891,6 +892,27 @@ class DirectorController extends Controller
         $flight->save();
         \RealRashid\SweetAlert\Facades\Alert::success('Evento Actualizado', 'Operacion exitosa');
         return redirect('director/evento/listar');
+
+    }
+
+
+    //Servicio 14
+
+    function viewNoticia(){
+        return view('dashboard.director.noticia');
+    }
+
+
+    function agregarNoticia(Request $request){
+
+        Noticia::create([
+            'titulo' => $request['titulo'],
+            'autor' => $request['autor'],
+            'noticia' => $request['noticia'],
+            'envio' =>  $request['envio']
+        ]);
+        \RealRashid\SweetAlert\Facades\Alert::success('Noticia agregada', 'Operacion exitosa');
+        return back();
 
     }
 

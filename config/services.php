@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '1065481155972-lqmkdar5vh9jdpisohml0nhnc0dargdr.apps.googleusercontent.com',
         'client_secret' => 'NUSkQOyzUTS4I6C8rz_crpYr',
-        'redirect' => 'http://127.0.0.1:8000/login/google/callback',
+        'redirect' => 'http://egresadoagro.herokuapp.com/login/google/callback',
     ],
 
 ];

@@ -122,3 +122,17 @@ function info(e){
 function Capempresa(){
     $("#empresa").val($("#exampleFormControlSelect2").val());
 }
+
+function viewImg(img){
+    event.preventDefault();
+    Swal.fire({
+        title: 'Vista de la imagen',
+        imageUrl: img,
+        imageWidth: 600,
+        imageHeight: 250,
+        imageAlt: 'cargando...',
+    })
+
+}
+
+

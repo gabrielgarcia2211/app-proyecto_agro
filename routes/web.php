@@ -62,6 +62,7 @@ Route::group(['prefix' => 'director', 'middleware' => ['auth', 'rol:1']], functi
     Route::get('/evento/listar', 'DirectorController@viewListarEvento')->name('admin.evento.listar');
     Route::get('/evento/actualizar/{id}', 'DirectorController@viewactualizarEvento')->name('admin.evento.actualizar');
     Route::get('/encuesta', 'DirectorController@viewEncuesta')->name('admin.encuesta');
+    Route::get('/noticia', 'DirectorController@viewNoticia')->name('admin.noticia');
 
     //------------------------------//
 
@@ -82,6 +83,7 @@ Route::group(['prefix' => 'director', 'middleware' => ['auth', 'rol:1']], functi
     Route::post('/evento/eliminar/{id}/{nombre}', 'DirectorController@deleteEvento')->name('admin.evento.eliminar');
     Route::post('/evento/actualizar/{id}', 'DirectorController@actualizarEvento')->name('admin.evento.actualizar');
     Route::post('/encuesta', 'DirectorController@enviarEncuesta')->name('admin.encuesta');
+    Route::post('/noticia', 'DirectorController@agregarNoticia')->name('admin.noticia');
 
 });
 
@@ -91,6 +93,10 @@ Route::group(['prefix' => 'estudiante', 'middleware' => ['auth', 'rol:2']], func
     Route::get('/principal', 'EstudianteController@viewPrincipal')->name('estudiante.principal');
     Route::get('/oferta', 'EstudianteController@viewOferta')->name('estudiante.oferta');
     Route::get('/actualizar', 'EstudianteController@viewActualizar')->name('estudiante.actualizar');
+    Route::get('/eventos', 'EstudianteController@viewEventos')->name('estudiante.eventos');
+
+    //Route::get('/noticias', 'EstudianteController@viewNoticia')->name('estudiante.noticia');
+    Route::get('/tesis', 'EstudianteController@viewTesis')->name('estudiante.tesis');
 
 
 

@@ -24,12 +24,12 @@
                            <span class="nav-link-text">Actualizar datos</span>
                        </a>
                    </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('estudiante.tesis')}}">
                             <i class="fas fa-list"></i>
                             <span class="nav-link-text">Listado de tesis</span>
                         </a>
-                    </li>-->
+                    </li>
                   @if(!auth()->user()->estudiante->egresado==0)
                    <li class="nav-item">
                        <a  class="nav-link" href="{{route('estudiante.oferta')}}">
@@ -39,13 +39,13 @@
                    </li>
                 @endif
 
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('estudiante.eventos')}}">
                             <i class="fas fa-list"></i>
                             <span class="nav-link-text">Listado de eventos</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a  class="nav-link" href="#">
                             <i class="fas fa-newspaper"></i>
                             <span class="nav-link-text">Noticias</span>
@@ -137,7 +137,7 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Bienvenido</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Bienvenido, {{auth()->user()->persona->nombres}} {{auth()->user()->persona->apellidos}}</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         </nav>
                     </div>

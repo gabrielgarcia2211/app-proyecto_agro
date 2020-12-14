@@ -838,3 +838,26 @@ function viewImg(img){
 
 }
 
+
+//Servicio 14
+
+function enviarNoticia(){
+    event.preventDefault();
+    Swal.fire({
+        title: 'Confirmar envio de noticia?',
+        text: "Esta operacion es irreversible",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#ff0000',
+        confirmButtonText: 'Si, Enviar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var formulario = document.getElementById("formuNoticia");
+            formulario.submit();
+            return true;
+        }
+    })
+
+}
+

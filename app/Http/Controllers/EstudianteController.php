@@ -6,6 +6,8 @@ use App\Empresa_Estudiante;
 use App\Estudiante;
 use App\Hoja_Vida;
 use App\Persona;
+use App\Tesis_Estudiante;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +16,14 @@ Use Alert;
 class EstudianteController extends Controller
 {
     //Servicio 1
+    public $viewTesis;
+    public function __construct()
+    {
+        $this->viewTesis = $this->traerRutas('public');
+    }
+
+
+
     function viewPrincipal(){
         $codigo = auth()->user()->codigo;
         $empresa =  DB::select("SELECT  empresa__estudiantes.nitemprea FROM empresa__estudiantes WHERE empresa__estudiantes.codigoestudiante = $codigo ");
@@ -102,11 +112,96 @@ class EstudianteController extends Controller
 
     }
 
+
+    //Servicio 4
+
+    function viewTesis(){
+        $json = array();
+        $codigo = auth()->user()->codigo;
+        $user = User::join('tesis__estudiantes', 'users.codigo', '=', 'tesis__estudiantes.codigoestudiante')
+            ->join('teses', 'teses.codigo', '=', 'tesis__estudiantes.id_tesis')
+            ->join('personas', 'personas.documento', '=', 'users.documento')->where('users.codigo','=', $codigo )->get();
+
+        foreach ($user as $est) {
+            $unico = true;
+            $id = $est['id_tesis'];
+            $datos = Tesis_Estudiante::where('id_tesis', '=', $id)->get();
+            $array_estudiantes = array();
+            $fecha = "";
+            foreach ($datos as $d) {
+                array_push($array_estudiantes, $d['codigoestudiante']);
+                $fecha = $d['created_at'];
+            }
+
+            if(!empty($json)){
+                foreach ($json as $j){
+                    if($id==$j['id']){
+                        $unico = false;
+                        break;
+                    }
+                }
+
+            }
+            if($unico){
+                $json[] = array(
+                    'id' => $est['id_tesis'],
+                    'titulo' => $est['titulo'],
+                    'archivo' => $est['archivo'],
+                    'nombres' => $est['nombres'],
+                    'apellidos' => $est['apellidos'],
+                    'estudiantes' => $array_estudiantes,
+                    'fecha' => $fecha
+                );
+            }
+
+
+        }
+
+        if(isset($json)) {
+            $ruta =  $this->viewTesis;
+        }
+        return view('dashboard.estudiante.tesis')->with(compact('json','ruta'));
+    }
+
     //Servicio 4
 
     function viewOferta(){
         $data  = DB::select('SELECT *  FROM ofertas');
         return view('dashboard.estudiante.listarOfertas')->with(compact('data'));
+    }
+
+    //Servicio 5
+
+    function viewEventos(){
+        $data  = DB::select('SELECT *  FROM eventos');
+        if(isset($data)) {
+            $ruta =  $this->traerNombre('evento');
+
+        }
+        return view('dashboard.estudiante.listarEvento')->with(compact('data','ruta'));
+    }
+
+    function traerNombre($folder){
+
+        // Get root directory contents...
+        $contents = collect(Storage::disk('google')->listContents('/', false));
+
+        // Find the folder you are looking for...
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first(); // There could be duplicate directory names!
+
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+
+        // Get the files inside the folder...
+        $files = collect(Storage::disk('google')->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+
+        return $files->mapWithKeys(function($file) {
+            return [$file['name'] => Storage::disk('google')->url($file['path'])];
+        });
     }
 
     //Servicio 6
@@ -157,6 +252,35 @@ class EstudianteController extends Controller
             'direccion' => 'required',
             'correo' => 'required',
         ]);
+
+    }
+
+    public function  traerRutas($folder)
+    {
+        // Get root directory contents...
+        $contents = collect(Storage::disk('google')->listContents('/', false));
+
+        // Find the folder you are looking for...
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first(); // There could be duplicate directory names!
+
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+
+        // Get the files inside the folder...
+        $files = collect(Storage::disk('google')->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+
+
+
+        $data = $files->mapWithKeys(function($file) {
+            return [ $file['name'] => Storage::disk('google')->url($file['path'])];
+        });
+
+        return $data;
+
 
     }
 
