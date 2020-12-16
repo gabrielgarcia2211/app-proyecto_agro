@@ -124,7 +124,7 @@ class LoginController extends Controller
 
 
         } catch (\Exception $e) {
-            return view('error.index');
+            return view('login.index');
         }
 
 

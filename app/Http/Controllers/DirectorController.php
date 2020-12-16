@@ -438,8 +438,7 @@ class DirectorController extends Controller
 
             return $data;
         }catch(\Exception $ex){
-            echo $ex;
-            return false;
+            return view('error.index');
         }
 
 

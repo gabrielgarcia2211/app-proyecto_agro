@@ -15,7 +15,7 @@
              alt="Responsive image" style="padding-top: 8%;">
     </div>
     <div>
-        <p class="font-weight-bold"><h3>ERRO DE ACCESO A LA DIRECCION</h3>
+        <p class="font-weight-bold"><h3>OOPS!!! , ERROR DE ACCESO A LA DIRECCION</h3>
     </div>
 </div>
 </body>
