@@ -97,12 +97,12 @@
                                 <span class="nav-link-text">Publicar noticia</span>
                             </a>
                         </li>
-                        <!--<li class="nav-item">
-                            <a  class="nav-link" href="#">
+                        <li class="nav-item">
+                            <a  class="nav-link" href="{{route('admin.listar.noticia')}}">
                                 <i class="fas fa-newspaper"></i>
                                 <span class="nav-link-text">Noticias publicadas</span>
                             </a>
-                        </li>-->
+                        </li>
                     </ul>
                 </div>
 

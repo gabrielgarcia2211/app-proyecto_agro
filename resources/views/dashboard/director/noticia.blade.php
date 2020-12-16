@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="noticia">Noticia</label>
-                            <textarea id="noticia" class="form-control" name="noticia" rows="3" style="resize: none; height: 300px;" required></textarea>
+                            <textarea id="noticia" class="form-control" name="noticia" rows="3" maxlength="255" style="resize: none; height: 300px;" required></textarea>
                         </div>
                         <button class="btn btn-primary" style="background-color: #dd4b39; border-color: #dd4b39;">Enviar</button>
                     </div>

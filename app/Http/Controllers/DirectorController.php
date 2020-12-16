@@ -413,29 +413,35 @@ class DirectorController extends Controller
 
     public function  traerRutas($folder)
     {
-        // Get root directory contents...
-        $contents = collect(Storage::disk('google')->listContents('/', false));
+        try{
+            // Get root directory contents...
+            $contents = collect(Storage::disk('google')->listContents('/', false));
 
-        // Find the folder you are looking for...
-        $dir = $contents->where('type', '=', 'dir')
-            ->where('filename', '=', $folder)
-            ->first(); // There could be duplicate directory names!
+            // Find the folder you are looking for...
+            $dir = $contents->where('type', '=', 'dir')
+                ->where('filename', '=', $folder)
+                ->first(); // There could be duplicate directory names!
 
-        if ( ! $dir) {
-            return 'No such folder!';
+            if ( ! $dir) {
+                return 'No such folder!';
+            }
+
+            // Get the files inside the folder...
+            $files = collect(Storage::disk('google')->listContents($dir['path'], false))
+                ->where('type', '=', 'file');
+
+
+
+            $data = $files->mapWithKeys(function($file) {
+                return [ $file['name'] => Storage::disk('google')->url($file['path'])];
+            });
+
+            return $data;
+        }catch(\Exception $ex){
+            echo $ex;
+            return false;
         }
 
-        // Get the files inside the folder...
-        $files = collect(Storage::disk('google')->listContents($dir['path'], false))
-            ->where('type', '=', 'file');
-
-
-
-        $data = $files->mapWithKeys(function($file) {
-            return [ $file['name'] => Storage::disk('google')->url($file['path'])];
-        });
-
-        return $data;
 
 
     }
@@ -902,7 +908,6 @@ class DirectorController extends Controller
         return view('dashboard.director.noticia');
     }
 
-
     function agregarNoticia(Request $request){
 
         Noticia::create([
@@ -914,6 +919,13 @@ class DirectorController extends Controller
         \RealRashid\SweetAlert\Facades\Alert::success('Noticia agregada', 'Operacion exitosa');
         return back();
 
+    }
+
+    //Servicio 15
+
+    function viewListarNoticia(){
+        $data = Noticia::all();
+        return view('dashboard.director.listarNoticia')->with(compact('data'));
     }
 
 

@@ -110,16 +110,23 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        $ingresoError= array();
-        $user = Socialite::driver('google')->stateless()->user();
+        try{
+            $user = Socialite::driver('google')->stateless()->user();
+            $ingresoError= array();
 
-        $user = User::where('email',$user->getEmail())->get();
-        if(sizeof($user)==1){
-            $this->guard()->login($user[0]);
-            return redirect('/home');
+            $user = User::where('email',$user->getEmail())->get();
+            if(sizeof($user)==1){
+                $this->guard()->login($user[0]);
+                return redirect('/home');
+            }
+            array_push($ingresoError,"¡Email no registrado en Agro Industrial, tenga en cuenta que solo esta permitido el inicio con el correo institucional.!");
+            return view('login.index')->with(compact('ingresoError'));
+
+
+        } catch (\Exception $e) {
+            return view('error.index');
         }
-        array_push($ingresoError,"¡Email no registrado en Agro Industrial, tenga en cuenta que solo esta permitido el inicio con el correo institucional.!");
-        return view('login.index')->with(compact('ingresoError'));
+
 
 
     }
