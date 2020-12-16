@@ -43,8 +43,12 @@
                                             @elseif($data[$j]->envio==0)
                                             <p  class="card-text"><span style="color:blue; font-family: Nunito, sans-serif">Destinatario: </span> Estudiantes</p>
                                             @else
-                                            <p  class="card-text"><span style="color:blue; font-family: Nunito, sans-serif">Destinatario: </span> Egresados/Egresados</p>
+                                            <p  class="card-text"><span style="color:blue; font-family: Nunito, sans-serif">Destinatario: </span> Egresados/Estudiantes</p>
                                             @endif
+                                            <form id="formu-noticia" action="{{route('admin.noticia.eliminar', [$data[$j]->id])}}"  method="POST" onsubmit="return eliminarNoticia()">
+                                                @csrf
+                                                <button class="btn btn-danger" >Eliminar</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

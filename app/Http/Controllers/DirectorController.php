@@ -927,6 +927,14 @@ class DirectorController extends Controller
         return view('dashboard.director.listarNoticia')->with(compact('data'));
     }
 
+    function deleteNoticia($id){
+        $flight = Noticia::find($id);
+        $flight->delete();
+        \RealRashid\SweetAlert\Facades\Alert::success('Noticia Eliminada', 'Operacion exitosa');
+        return back();
+
+    }
+
 
 
 

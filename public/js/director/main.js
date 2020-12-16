@@ -861,3 +861,27 @@ function enviarNoticia(){
 
 }
 
+
+//Servicio 15
+
+
+function eliminarNoticia(){
+    event.preventDefault();
+    Swal.fire({
+        title: 'Desea eliminar la noticia?',
+        text: "Esta operacion es irreversible",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var formulario = document.getElementById("formu-noticia");
+            formulario.submit();
+            return true;
+        }
+    })
+
+
+}

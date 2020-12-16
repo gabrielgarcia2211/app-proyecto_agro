@@ -45,12 +45,12 @@
                             <span class="nav-link-text">Listado de eventos</span>
                         </a>
                     </li>
-                    <!--<li class="nav-item">
-                        <a  class="nav-link" href="#">
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{route('estudiante.noticia')}}">
                             <i class="fas fa-newspaper"></i>
                             <span class="nav-link-text">Noticias</span>
                         </a>
-                    </li>-->
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

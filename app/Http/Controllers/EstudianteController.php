@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empresa_Estudiante;
 use App\Estudiante;
 use App\Hoja_Vida;
+use App\Noticia;
 use App\Persona;
 use App\Tesis_Estudiante;
 use App\User;
@@ -301,10 +302,14 @@ class EstudianteController extends Controller
 
         return [$file['name'] => Storage::disk('google')->url($file['path'])];
 
+    }
 
+    //Servicio 7
 
+    function viewListarNoticia(){
+        $data =  DB::select('SELECT *  FROM noticia WHERE envio = 2 OR envio =' .  auth()->user()->estudiante->egresado);
 
-
+        return view('dashboard.estudiante.listarNoticia')->with(compact('data'));
     }
 
 }
