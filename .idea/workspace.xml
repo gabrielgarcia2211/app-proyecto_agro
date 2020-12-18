@@ -21,13 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1f98c37c-3026-4cdb-b18c-33ea1217121a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EstudianteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EstudianteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/director/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/director/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/director/listarNoticia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/director/listarNoticia.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/nav/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/nav/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +198,9 @@
       <updated>1607961161617</updated>
       <workItem from="1607961162823" duration="4405000" />
       <workItem from="1608064029765" duration="28000" />
-      <workItem from="1608133838772" duration="5727000" />
+      <workItem from="1608133838772" duration="5851000" />
+      <workItem from="1608151547870" duration="2099000" />
+      <workItem from="1608327252324" duration="4046000" />
     </task>
     <servers />
   </component>
@@ -221,6 +217,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608137169147">
