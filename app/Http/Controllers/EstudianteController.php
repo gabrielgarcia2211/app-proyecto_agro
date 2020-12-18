@@ -307,7 +307,7 @@ class EstudianteController extends Controller
     //Servicio 7
 
     function viewListarNoticia(){
-        $data =  DB::select('SELECT *  FROM noticia WHERE envio = 1 OR envio =' .  auth()->user()->estudiante->egresado);
+        $data =  DB::select('SELECT *  FROM noticia WHERE envio = 0 OR envio =' .  auth()->user()->estudiante->egresado);
 
         return view('dashboard.estudiante.listarNoticia')->with(compact('data'));
     }
