@@ -612,7 +612,7 @@ class DirectorController extends Controller
                $dataPruebas11  = DB::select('SELECT u.codigo, u.documento , s11.*, FORMAT((s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
 
            }else if($estudiante=="Egresado"){
-               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*, FORMAT((s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
+               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
            }
            $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
 
