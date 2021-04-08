@@ -638,6 +638,27 @@ function generarReporte() {
 }
 
 
+function capturarReporte() {
+    const values = $('#buscadorReporte').val();
+
+    if (values.length > 0){
+        $("#SeReporte").prop("disabled", true);
+    }else{
+        $("#SeReporte").prop("disabled", false);
+    }
+
+}
+
+
+function infoReporte(e){
+    e.preventDefault();
+    Swal.fire(
+        'Carga de datos',
+        'Si el campo contiene digitos, se bloqueará la busqueda general'
+    )
+}
+
+
 //Servicio 9
 
 function guardarEmpresa(e){

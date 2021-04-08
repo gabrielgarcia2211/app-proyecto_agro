@@ -565,6 +565,7 @@ class DirectorController extends Controller
                     'p15' => $est->ip11,
                     'nombre' => $user['nombres'],
                     'apellido' => $user['apellidos']
+
                 );
             }
             $JString = json_encode($json);
@@ -599,19 +600,19 @@ class DirectorController extends Controller
 
        }else if($reporte=="Notas pruebas Saber Pro"){
             if($estudiante=="Alumno"){
-                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.*  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  e.egresado=0');
+                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.* , FORMAT((ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  e.egresado=0');
 
             }else if($estudiante=="Egresado"){
-                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.*  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro   WHERE e.egresado=1');
+                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.*, FORMAT((ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro   WHERE e.egresado=1');
             }
            $pdf = \PDF::loadView('pdf', compact('dataPruebasPro'));
 
        }else if($reporte=="Notas pruebas Saber 11"){
            if($estudiante=="Alumno"){
-               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento , s11.*  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
+               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento , s11.*, FORMAT((s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
 
            }else if($estudiante=="Egresado"){
-               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
+               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*, FORMAT((s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5,1) AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
            }
            $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
 

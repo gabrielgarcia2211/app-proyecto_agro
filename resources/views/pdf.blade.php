@@ -41,7 +41,7 @@
     </div>
     @endif
     @if(!empty($dataPruebasPro))
-        <p style="padding: 10px;color: blue">Informacion Pruebas Saber Pro</p>
+        <p style="padding: 10px;color: BLUE ">Informacion Pruebas Saber Pro</p>
         <div class="table-responsive">
             <table class="table table-striped table-responsive-sm">
                 <thead>
@@ -52,6 +52,7 @@
                     <th scope="col" style="text-align: center">Competencias Ciudadanas</th>
                     <th scope="col" style="text-align: center">Comunicacion Escrita</th>
                     <th scope="col" style="text-align: center">Ingles</th>
+                    <th scope="col" style="text-align: center">Puntaje Global</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,6 +64,7 @@
                         <td style="text-align: center">{{$data->competencias_ciudadana}}</td>
                         <td style="text-align: center">{{$data->comunicacion_escrita}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
+                        <td style="text-align: center">{{$data->promedio}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -81,6 +83,7 @@
                     <th scope="col" style="text-align: center">Sociales Ciudadanas</th>
                     <th scope="col" style="text-align: center">Naturales</th>
                     <th scope="col" style="text-align: center">Ingles</th>
+                    <th scope="col" style="text-align: center">Puntaje Global</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,6 +95,7 @@
                         <td style="text-align: center">{{$data->sociales_ciudadanas}}</td>
                         <td style="text-align: center">{{$data->naturales}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
+                        <td style="text-align: center">{{$data->promedio}}</td>
                     </tr>
                 @endforeach
                 </tbody>

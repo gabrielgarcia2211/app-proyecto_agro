@@ -26,21 +26,23 @@
         <div class="card-body">
             <div class="box box-primary" style="border-top: 3px solid #3c8dbc; background-color: white; padding-bottom: 10px;">
                 <br>
+                <input style="display: inline-block;margin-bottom: 20px" class="form-control col-md-3 light-table-filter" data-table="order-table" type="number" id="buscadorReporte" placeholder="Bucar por codigo.." onchange="capturarReporte()"> <a onclick="infoReporte(event)" href=""><i class="fas fa-question"></i></a>
+                <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label  for="exampleFormControlSelect1">Seleccionar Estudiante</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="estudiante">
+                        <label  for="exampleFormControlSelect1" >Seleccionar Estudiante</label>
+                        <select class="form-control" id="SeReporte" name="estudiante">
                             <option>Alumno</option>
                             <option>Egresado</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <label id="id1" for="exampleFormControlSelect2">Seleccionar Tipo de reporte</label>
+                        <label id="id1" for="exampleFormControlSelect2" id="StReporte">Seleccionar Tipo de reporte</label>
                         <select  class="form-control" id="exampleFormControlSelect2" name="reporte">
                             <option >Datos Personal</option>
                             <option >Notas pruebas Saber Pro</option>
                             <option >Notas pruebas Saber 11</option>
-                            <option >Promedio</option>
+                            <option >Promedio Pruebas</option>
                         </select>
                     </div>
                 </div>
