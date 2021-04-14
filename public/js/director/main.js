@@ -201,6 +201,8 @@ function cargarLista(tipo){
                 <td >${ta.fechaIngreso}</td>
                 <td >${ta.fechaEgreso}</td>
                 <td >${ta.promedio}</td>
+                <td >${ta.fecha_pro}</td>
+                <td >${ta.fecha_11}</td>
                 </tr>`
                 });
                 $('tbody').html(template);

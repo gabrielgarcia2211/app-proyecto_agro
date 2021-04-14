@@ -66,7 +66,7 @@
                         <td style="text-align: center">{{$data->comunicacion_escrita}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
                         <td style="text-align: center">{{$data->promedio}}</td>
-                        <td style="text-align: center">{{$data->fecha}}</td>
+                        <td style="text-align: center">{{$data->fecha_pro}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -99,7 +99,7 @@
                         <td style="text-align: center">{{$data->naturales}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
                         <td style="text-align: center">{{$data->promedio}}</td>
-                        <td style="text-align: center">{{$data->fecha}}</td>
+                        <td style="text-align: center">{{$data->fecha_11}}</td>
                     </tr>
                 @endforeach
                 </tbody>

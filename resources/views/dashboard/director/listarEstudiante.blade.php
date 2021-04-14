@@ -54,6 +54,8 @@
                                     <th>Fecha Ingreso</th>
                                     <th>Fecha Egreso</th>
                                     <th>Promedio</th>
+                                    <th>Prueba Saber Pro</th>
+                                    <th>Prueba Saber 11</th>
                                 </tr>
                                 </thead>
                                 <tbody id="estudiantesCarga">
