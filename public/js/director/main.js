@@ -3,6 +3,8 @@
 var lista = [];
 let templateCodigos = '';
 var correo=false;
+var fechaReporte = false;
+var fechaReporteCodigo = false;
 $("#guardaExcel").prop("disabled", true);
 $("#cargaArchivoT").prop("disabled", true);
 $("#cargaArchivoE").prop("disabled", true);
@@ -198,7 +200,7 @@ function cargarLista(tipo){
                 <td >${ta.email}</td>
                 <td >${ta.fechaIngreso}</td>
                 <td >${ta.fechaEgreso}</td>
-                 <td >${ta.promedio}</td>
+                <td >${ta.promedio}</td>
                 </tr>`
                 });
                 $('tbody').html(template);
@@ -240,7 +242,7 @@ function capturar() {
                     <td >${ta.correoInstitucional}</td>
                     <td >${ta.fechaIngreso}</td>
                     <td >${ta.fechaEgreso}</td>
-                     <td >${ta.promedio}</td>
+                    <td >${ta.promedio}</td>
                     </tr>`
                     });
                     $('tbody').html(template);
@@ -639,23 +641,47 @@ function generarReporte() {
 
 
 function capturarReporte() {
-    const values = $('#buscadorReporte').val();
+    const values = $('#startReporteCodigo').val();
+    //const reporteFecha = $('#fechaReporte').val();
 
     if (values.length > 0){
+        $("#especifico").hide();
         $("#SeReporte").prop("disabled", true);
+        $("#fechaReporte").prop("disabled", true);
+        $("#startReporteFecha").prop("disabled", true);
+
     }else{
+        $("#especifico").show();
         $("#SeReporte").prop("disabled", false);
+        $("#startReporteFecha").prop("disabled", false);
+        $("#fechaReporte").prop("disabled", false);
     }
 
 }
 
+function busquedaReporte(){
 
-function infoReporte(e){
-    e.preventDefault();
-    Swal.fire(
-        'Carga de datos',
-        'Si el campo contiene digitos, se bloqueará la busqueda general'
-    )
+    document.getElementById("fechaReporte").checked = true;
+    $("#startReporteCodigo").prop("disabled", true);
+    $("#especifico").hide();
+    $("#personal").hide();
+
+}
+
+function busquedaReporteCheck(){
+    var checkBox = document.getElementById("fechaReporte");
+    $('input[type=date]').val('');
+    if(checkBox.checked != true){
+        $("#startReporteCodigo").prop("disabled", false);
+        $("#especifico").show();
+        $("#personal").show();
+    }else{
+        $("#startReporteCodigo").prop("disabled", true);
+        $("#especifico").hide();
+        $("#personal").hide();
+    }
+
+
 }
 
 

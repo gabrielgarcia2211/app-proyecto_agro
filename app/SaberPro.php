@@ -10,7 +10,7 @@ class SaberPro extends Model
     protected $table = 'saber_pros';
     public $timestamps = false;
 
-    protected $fillable = ['idsaberpro', 'lectura_critica','razonamiento_cuantitativo', 'competencias_ciudadana', 'comunicacion_escrita', 'ingles'];
+    protected $fillable = ['idsaberpro', 'lectura_critica','razonamiento_cuantitativo', 'competencias_ciudadana', 'comunicacion_escrita', 'ingles','fecha'];
 
     public function historial(){
         return $this->belongsTo(Historial::class,'idSaberPro');

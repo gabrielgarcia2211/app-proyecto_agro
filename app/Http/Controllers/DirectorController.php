@@ -31,6 +31,7 @@ class DirectorController extends Controller
     public $viewTesis;
     public function __construct()
     {
+
         $this->viewTesis = $this->traerRutas('public');
     }
 
@@ -588,48 +589,101 @@ class DirectorController extends Controller
     public function generarReporte(Request $request){
         $estudiante =  $request->input('estudiante');
         $reporte =  $request->input('reporte');
+        $especifico =  $request->input('startReporteCodigo');
+        $startReporteFecha =  $request->input('startReporteFecha');
 
-       if($reporte=="Datos Personal"){
-            if($estudiante=="Alumno"){
-                $dataEstudiante  = DB::select('SELECT * FROM users u INNER JOIN personas  p ON u.documento=p.documento INNER JOIN estudiantes e ON e.documento=u.documento WHERE u.documento=p.documento AND e.egresado=0');
+        $fechaActual = date('Y-m-d');
 
-            }else if($estudiante=="Egresado"){
-                $dataEstudiante  = DB::select('SELECT * FROM users u INNER JOIN personas  p ON u.documento=p.documento INNER JOIN estudiantes e ON e.documento=u.documento WHERE u.documento=p.documento AND e.egresado=1');
+        if(!empty($startReporteFecha)){
+            if($reporte=="Notas pruebas Saber Pro"){
+                if($estudiante=="Alumno"){
+                    $dataPruebasPro  = DB::select("SELECT u.codigo, u.documento, ps.* , (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  e.egresado=0 AND ps.fecha Between '$startReporteFecha' AND '$fechaActual'");
+                }else if($estudiante=="Egresado"){
+                    $dataPruebasPro  = DB::select("SELECT u.codigo, u.documento, ps.*, (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro   WHERE e.egresado=1 AND ps.fecha Between '$startReporteFecha' AND '$fechaActual'");
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataPruebasPro'));
+
+            }else if($reporte=="Notas pruebas Saber 11"){
+                if($estudiante=="Alumno"){
+                    $dataPruebas11  = DB::select("SELECT u.codigo, u.documento , s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0 AND S11.fecha Between '$startReporteFecha' AND '$fechaActual'");
+
+                }else if($estudiante=="Egresado"){
+                    $dataPruebas11  = DB::select("SELECT u.codigo, u.documento, s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1 AND S11.fecha Between '$startReporteFecha' AND '$fechaActual'");
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
+
             }
-           $pdf = \PDF::loadView('pdf', compact('dataEstudiante'));
+            return $pdf->setPaper('A3','landscape')->stream();
+        }
 
-       }else if($reporte=="Notas pruebas Saber Pro"){
-            if($estudiante=="Alumno"){
-                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.* , (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  e.egresado=0');
 
-            }else if($estudiante=="Egresado"){
-                $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.*, (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro   WHERE e.egresado=1');
+
+        if($especifico==null){
+            if($reporte=="Datos Personal"){
+                if($estudiante=="Alumno"){
+                    $dataEstudiante  = DB::select('SELECT * FROM users u INNER JOIN personas  p ON u.documento=p.documento INNER JOIN estudiantes e ON e.documento=u.documento WHERE u.documento=p.documento AND e.egresado=0');
+
+                }else if($estudiante=="Egresado"){
+                    $dataEstudiante  = DB::select('SELECT * FROM users u INNER JOIN personas  p ON u.documento=p.documento INNER JOIN estudiantes e ON e.documento=u.documento WHERE u.documento=p.documento AND e.egresado=1');
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataEstudiante'));
+
+            }else if($reporte=="Notas pruebas Saber Pro"){
+                if($estudiante=="Alumno"){
+                    $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.* , (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  e.egresado=0');
+
+                }else if($estudiante=="Egresado"){
+                    $dataPruebasPro  = DB::select('SELECT u.codigo, u.documento, ps.*, (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro   WHERE e.egresado=1');
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataPruebasPro'));
+
+            }else if($reporte=="Notas pruebas Saber 11"){
+                if($estudiante=="Alumno"){
+                    $dataPruebas11  = DB::select('SELECT u.codigo, u.documento , s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
+
+                }else if($estudiante=="Egresado"){
+                    $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
+
+            }else if($reporte=="Promedio"){
+                if($estudiante=="Alumno"){
+                    $dataGrafica  = DB::select('SELECT AVG(s11.lectura_critica) AS lectura,  AVG(s11.matematicas) AS matematicas, AVG(s11.sociales_ciudadanas) AS sociales_ciudadanas, AVG(s11.naturales) AS naturales, AVG(s11.ingles) AS ingle,AVG(s.lectura_critica) AS lectura_critica,  AVG(s.razonamiento_cuantitativo) AS razonamiento, AVG(s.competencias_ciudadana) AS competencias_ciudadana, AVG(s.comunicacion_escrita) AS comunicacion_escrita, AVG(s.ingles) AS ingles FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros s ON s.idsaberpro=h.idsaberpro INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
+
+                }else if($estudiante=="Egresado"){
+                    $dataGrafica  = DB::select('SELECT AVG(s11.lectura_critica) AS lectura,  AVG(s11.matematicas) AS matematicas, AVG(s11.sociales_ciudadanas) AS sociales_ciudadanas, AVG(s11.naturales) AS naturales, AVG(s11.ingles) AS ingle,AVG(s.lectura_critica) AS lectura_critica,  AVG(s.razonamiento_cuantitativo) AS razonamiento, AVG(s.competencias_ciudadana) AS competencias_ciudadana, AVG(s.comunicacion_escrita) AS comunicacion_escrita, AVG(s.ingles) AS ingles FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros s ON s.idsaberpro=h.idsaberpro INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=1');
+                }
+                $pdf = \PDF::loadView('pdf', compact('dataGrafica'));
+                return $pdf->setPaper('A4','landscape')->stream();
             }
-           $pdf = \PDF::loadView('pdf', compact('dataPruebasPro'));
+        }else if($especifico!=null){
 
-       }else if($reporte=="Notas pruebas Saber 11"){
-           if($estudiante=="Alumno"){
-               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento , s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
 
-           }else if($estudiante=="Egresado"){
-               $dataPruebas11  = DB::select('SELECT u.codigo, u.documento, s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE e.egresado=1');
-           }
-           $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
+            $user = User::where('codigo',$especifico)->get();
+            $ingresoEspecifico = array();
+            if(sizeof($user)!=0) {
+                if ($reporte == "Datos Personal") {
+                    $dataEstudiante = DB::select("SELECT * FROM users u INNER JOIN personas  p ON u.documento=p.documento INNER JOIN estudiantes e ON e.documento=u.documento WHERE u.codigo= '$especifico'");
+                    $pdf = \PDF::loadView('pdf', compact('dataEstudiante'));
+                } else if ($reporte == "Notas pruebas Saber Pro") {
+                    $dataPruebasPro = DB::select("SELECT u.codigo, u.documento, ps.* , (ps.lectura_critica + ps.razonamiento_cuantitativo + ps.competencias_ciudadana + ps.comunicacion_escrita + ps.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros ps ON h.idsaberpro = ps.idsaberpro  WHERE  u.codigo='$especifico'");
+                    $pdf = \PDF::loadView('pdf', compact('dataPruebasPro'));
+                } else if ($reporte == "Notas pruebas Saber 11") {
+                    $dataPruebas11 = DB::select("SELECT u.codigo, u.documento , s11.*, (s11.lectura_critica + s11.matematicas + s11.sociales_ciudadanas + s11.naturales + s11.ingles)/5 AS promedio  FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento  INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE   u.codigo='$especifico'");
+                    $pdf = \PDF::loadView('pdf', compact('dataPruebas11'));
+                }
+            }else{
+                array_push($ingresoEspecifico,"¡Codigo no registrado!");
+                return view('dashboard.director.reportes')->with(compact('ingresoEspecifico'));
+            }
+        }
 
-       }else if($reporte=="Promedio"){
-           if($estudiante=="Alumno"){
-               $dataGrafica  = DB::select('SELECT AVG(s11.lectura_critica) AS lectura,  AVG(s11.matematicas) AS matematicas, AVG(s11.sociales_ciudadanas) AS sociales_ciudadanas, AVG(s11.naturales) AS naturales, AVG(s11.ingles) AS ingle,AVG(s.lectura_critica) AS lectura_critica,  AVG(s.razonamiento_cuantitativo) AS razonamiento, AVG(s.competencias_ciudadana) AS competencias_ciudadana, AVG(s.comunicacion_escrita) AS comunicacion_escrita, AVG(s.ingles) AS ingles FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros s ON s.idsaberpro=h.idsaberpro INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=0');
 
-           }else if($estudiante=="Egresado"){
-               $dataGrafica  = DB::select('SELECT AVG(s11.lectura_critica) AS lectura,  AVG(s11.matematicas) AS matematicas, AVG(s11.sociales_ciudadanas) AS sociales_ciudadanas, AVG(s11.naturales) AS naturales, AVG(s11.ingles) AS ingle,AVG(s.lectura_critica) AS lectura_critica,  AVG(s.razonamiento_cuantitativo) AS razonamiento, AVG(s.competencias_ciudadana) AS competencias_ciudadana, AVG(s.comunicacion_escrita) AS comunicacion_escrita, AVG(s.ingles) AS ingles FROM users u INNER JOIN estudiantes e ON e.documento=u.documento INNER JOIN personas p ON u.documento=p.documento INNER JOIN historials h ON h.documento=u.documento INNER JOIN saber_pros s ON s.idsaberpro=h.idsaberpro INNER JOIN saber11s s11 ON s11.idsaber11=h.idsaber11 WHERE  e.egresado=1');
-           }
-           $pdf = \PDF::loadView('pdf', compact('dataGrafica'));
-           return $pdf->setPaper('A4','landscape')->stream();
-       }
-
-        return $pdf->setPaper('A3','landscape')->stream();
+       return $pdf->setPaper('A3','landscape')->stream();
 
     }
+
+
 
     //Servicio 9
 

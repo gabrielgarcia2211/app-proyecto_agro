@@ -46,13 +46,14 @@
             <table class="table table-striped table-responsive-sm">
                 <thead>
                 <tr>
-                    <th scope="col" style="text-align: center">Codigo</th>
+                    <th scope="col" style="text-align: center">Codigo Estudiante</th>
                     <th scope="col" style="text-align: center">Lectura Critica</th>
                     <th scope="col" style="text-align: center">Razonamierto Cuantitativo</th>
                     <th scope="col" style="text-align: center">Competencias Ciudadanas</th>
                     <th scope="col" style="text-align: center">Comunicacion Escrita</th>
                     <th scope="col" style="text-align: center">Ingles</th>
                     <th scope="col" style="text-align: center">Puntaje Global</th>
+                    <th scope="col" style="text-align: center">Fecha realizada</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,7 @@
                         <td style="text-align: center">{{$data->comunicacion_escrita}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
                         <td style="text-align: center">{{$data->promedio}}</td>
+                        <td style="text-align: center">{{$data->fecha}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -77,13 +79,14 @@
             <table class="table table-striped table-responsive-sm">
                 <thead>
                 <tr>
-                    <th scope="col" style="text-align: center">Codigo</th>
+                    <th scope="col" style="text-align: center">Codigo Estudiante</th>
                     <th scope="col" style="text-align: center">Lectura Critica</th>
                     <th scope="col" style="text-align: center">Matematicas</th>
                     <th scope="col" style="text-align: center">Sociales Ciudadanas</th>
                     <th scope="col" style="text-align: center">Naturales</th>
                     <th scope="col" style="text-align: center">Ingles</th>
                     <th scope="col" style="text-align: center">Puntaje Global</th>
+                    <th scope="col" style="text-align: center">Fecha realizada</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -96,6 +99,7 @@
                         <td style="text-align: center">{{$data->naturales}}</td>
                         <td style="text-align: center">{{$data->ingles}}</td>
                         <td style="text-align: center">{{$data->promedio}}</td>
+                        <td style="text-align: center">{{$data->fecha}}</td>
                     </tr>
                 @endforeach
                 </tbody>

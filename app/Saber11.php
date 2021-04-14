@@ -11,7 +11,7 @@ class Saber11 extends Model
     protected $table = 'saber11s';
     public $timestamps = false;
 
-    protected $fillable = ['idsaber11', 'lectura_critica','matematicas', 'sociales_ciudadanas', 'naturales', 'ingles'];
+    protected $fillable = ['idsaber11', 'lectura_critica','matematicas', 'sociales_ciudadanas', 'naturales', 'ingles','fecha'];
 
     public function historial(){
         return $this->belongsTo(Historial::class,'idSaber11');

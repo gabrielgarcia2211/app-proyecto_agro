@@ -26,8 +26,6 @@
         <div class="card-body">
             <div class="box box-primary" style="border-top: 3px solid #3c8dbc; background-color: white; padding-bottom: 10px;">
                 <br>
-                <input style="display: inline-block;margin-bottom: 20px" class="form-control col-md-3 light-table-filter" data-table="order-table" type="number" id="buscadorReporte" placeholder="Bucar por codigo.." onchange="capturarReporte()"> <a onclick="infoReporte(event)" href=""><i class="fas fa-question"></i></a>
-                <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label  for="exampleFormControlSelect1" >Seleccionar Estudiante</label>
@@ -39,13 +37,35 @@
                     <div class="form-group col-md-6">
                         <label id="id1" for="exampleFormControlSelect2" id="StReporte">Seleccionar Tipo de reporte</label>
                         <select  class="form-control" id="exampleFormControlSelect2" name="reporte">
-                            <option >Datos Personal</option>
                             <option >Notas pruebas Saber Pro</option>
                             <option >Notas pruebas Saber 11</option>
-                            <option >Promedio Pruebas</option>
+                            <option id="personal">Datos Personal</option>
+                            <option id="especifico">Promedio Pruebas</option>
                         </select>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-check-label" for="fechaReporte">Busqueda por rangos de fechas</label>
+                        <input style="margin-left: 5px" type="checkbox" id="fechaReporte" onclick="busquedaReporteCheck()">
+                        <input style="display: inline-block" class="form-control" type="date" id="startReporteFecha" name="startReporteFecha" onclick="busquedaReporte()">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Seleccionar estudiante por codigo</label>
+                        <input style="display: inline-block" class="form-control" data-table="order-table" type="number" name="startReporteCodigo" id="startReporteCodigo" placeholder="Bucar por codigo.." onchange="capturarReporte()" >
+                    </div>
+                </div>
+                @if(!empty($ingresoEspecifico))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 50%">
+                        <strong>{{$ingresoEspecifico[0]}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div style="margin-top:20px; margin-bottom:30px">
                     <button class="btn btn-primary" style="background-color: #dd4b39; border-color: #dd4b39; color: white">Generar</button>
                 </div>

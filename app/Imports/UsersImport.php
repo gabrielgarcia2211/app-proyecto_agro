@@ -73,6 +73,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
             'sociales_ciudadanas' => $row['sociales_11'],
             'naturales' => $row['naturales'],
             'ingles' => $row['ingles_11'],
+            'fecha' => (isset($row['fecha_11']))?\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_11']):null
         ]);
 
         SaberPro::create([
@@ -82,6 +83,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
             'competencias_ciudadana' => $row['sociales'],
             'comunicacion_escrita' => $row['comunicacion'],
             'ingles' => $row['ingles'],
+            'fecha' => (isset($row['fecha_pro']))?\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_pro']):null
         ]);
 
         Historial::create([
