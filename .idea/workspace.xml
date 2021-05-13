@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f98c37c-3026-4cdb-b18c-33ea1217121a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/pdfPro.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/director/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/director/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/director/listarEstudiante.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/director/listarEstudiante.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarEvento.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarEvento.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +219,7 @@
       <workItem from="1618542219506" duration="35000" />
       <workItem from="1619703764169" duration="6325000" />
       <workItem from="1620087426135" duration="20000" />
-      <workItem from="1620912772297" duration="1021000" />
+      <workItem from="1620912772297" duration="1405000" />
     </task>
     <servers />
   </component>

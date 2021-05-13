@@ -348,7 +348,7 @@ class DirectorController extends Controller
     {
         $c = 170;//Total de creditos 100% "creo..."
         $dataEstudiante =Estudiante::join('users', 'estudiantes.documento', '=', 'users.documento')->join('personas', 'personas.documento', '=', 'users.documento')->get();
-
+        $ingreso = array();
 
         foreach ($dataEstudiante as $est) {
 
@@ -367,6 +367,7 @@ class DirectorController extends Controller
             }
 
         }
+
         $pdf = \PDF::loadView('pdfPro', compact('ingreso'));
         return $pdf->setPaper('A3','landscape')->stream();
 
