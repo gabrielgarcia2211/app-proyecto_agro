@@ -172,6 +172,7 @@ $(".buscarCodigoEgreso").click(function(e){
 
 
 function cargarLista(tipo){
+    let porcentaje;
     event.preventDefault();
     $('#buscador').val("");
     $("#resultadoBuscador").hide();
@@ -191,6 +192,15 @@ function cargarLista(tipo){
                 let tasks = JSON.parse(response);
                 let template = '';
                 tasks.forEach(ta => {
+
+                    if(ta.porcentajeAprobado>10){
+                        porcentaje = `<td style="background: #34ce57; color: white">${ta.porcentajeAprobado + " %"}</td>`;
+                    }else{
+                        porcentaje = `<td>${ta.porcentajeAprobado+ " %"}</td>`;
+                    }
+
+
+
                     template += `<tr>
                 <td >${ta.codigo}</td>
                 <td >${ta.documento}</td>
@@ -202,8 +212,9 @@ function cargarLista(tipo){
                 <td >${ta.fechaEgreso}</td>
                 <td >${ta.promedio}</td>
                 <td >${ta.fecha_pro}</td>
-                <td >${ta.fecha_11}</td>
-                </tr>`
+                <td >${ta.fecha_11}</td>` +
+                    porcentaje +
+                `</tr>`
                 });
                 $('tbody').html(template);
                 $("#carga").hide();
@@ -257,6 +268,25 @@ function capturar() {
             }
         });
     }
+}
+
+function generarReportePorcentaje() {
+    Swal.fire({
+        title: 'Generando reporte',
+        text: 'Por favor espere un momento..',
+        imageUrl: 'https://img.webme.com/pic/a/andwas/cargando5.gif',
+        imageWidth: 200,
+        imageHeight: 180,
+        imageAlt: 'Por favor espere un momento...',
+        showCancelButton: false,
+        showConfirmButton: false
+    })
+    event.preventDefault();
+    var formulario = document.getElementById("form-reportePorcentaje");
+    formulario.submit();
+    return true;
+
+
 }
 
 

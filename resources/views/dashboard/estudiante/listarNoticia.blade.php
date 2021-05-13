@@ -48,6 +48,9 @@
                 @endif
 
             </div>
+            <a class="btn" href="https://danielcaos.foroactivo.com/" target="_blank" style="background: #73a6c0;color: white">
+                Nuestro Foro
+            </a>
         </div>
     </div>
 

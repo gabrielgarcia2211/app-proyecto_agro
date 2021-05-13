@@ -80,6 +80,7 @@ Route::group(['prefix' => 'director', 'middleware' => ['auth', 'rol:1']], functi
     Route::post('/empresa/eliminar/{id}/{nombre}', 'DirectorController@deleteEmpresa')->name('admin.empresa.eliminar');
     Route::post('/estudiante/prueba', 'DirectorController@datosPrueba')->name('admin.prueba');
     Route::post('/reporte', 'DirectorController@generarReporte')->name('admin.reporte');
+    Route::post('/reporte/porcentaje', 'DirectorController@reportePorcentaje')->name('admin.reporte.porcentaje');
     Route::post('/evento', 'DirectorController@guardarEvento')->name('admin.evento');
     Route::post('/evento/eliminar/{id}/{nombre}', 'DirectorController@deleteEvento')->name('admin.evento.eliminar');
     Route::post('/evento/actualizar/{id}', 'DirectorController@actualizarEvento')->name('admin.evento.actualizar');

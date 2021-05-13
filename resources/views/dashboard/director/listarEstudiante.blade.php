@@ -28,6 +28,20 @@
                         </div>
                     </form>
 
+                    <form id="form-reportePorcentaje" action="{{ route('admin.reporte.porcentaje') }}" method="POST"  onsubmit="return generarReportePorcentaje()">
+                        @csrf
+                        <div class="card-header bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                <h5 class="h3 mb-0">Proximos a presentar pruebas pro</h5>
+                                <button style="background: #1d68a7" type="submit" class="btn btn-danger">Reporte de Aprobacion</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
                     <div class="card-body">
                         <p class="lead">
 
@@ -56,6 +70,7 @@
                                     <th>Promedio</th>
                                     <th>Prueba Saber Pro</th>
                                     <th>Prueba Saber 11</th>
+                                    <th>Porcentaje Aprobacion Pro</th>
                                 </tr>
                                 </thead>
                                 <tbody id="estudiantesCarga">

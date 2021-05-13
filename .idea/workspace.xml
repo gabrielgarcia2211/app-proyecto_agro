@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f98c37c-3026-4cdb-b18c-33ea1217121a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/pdfPro.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/director/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/director/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/director/listarEstudiante.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/director/listarEstudiante.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarEvento.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarEvento.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +188,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\proyecto_agro\resources\views" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -213,6 +221,11 @@
       <workItem from="1618434950124" duration="629000" />
       <workItem from="1618435855680" duration="10000" />
       <workItem from="1618436411567" duration="3221000" />
+      <workItem from="1618500086780" duration="2135000" />
+      <workItem from="1618542219506" duration="35000" />
+      <workItem from="1619703764169" duration="6325000" />
+      <workItem from="1620087426135" duration="20000" />
+      <workItem from="1620912772297" duration="1021000" />
     </task>
     <servers />
   </component>
@@ -232,13 +245,13 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608137169147">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620087449307">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608137169147" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1608064061852">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620087449307" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1619706068215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608064061852" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619706068215" />
   </component>
 </project>

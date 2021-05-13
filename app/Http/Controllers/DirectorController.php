@@ -281,10 +281,17 @@ class DirectorController extends Controller
     public function listarEstudiantes()
     {
 
-            $tipo = $_POST['search'];
+        $tipo = $_POST['search'];
         $estudiante = Estudiante::join('users', 'estudiantes.documento', '=', 'users.documento')->join('personas', 'personas.documento', '=', 'users.documento')->join('historials', 'personas.documento', '=', 'historials.documento')->join('saber11s', 'saber11s.idsaber11', '=', 'historials.idsaber11')->join('saber_pros', 'saber_pros.idsaberpro', '=', 'historials.idsaberpro')->where('estudiantes.egresado', '=', $tipo)->get();
 
-            foreach ($estudiante as $est) {
+
+
+
+        foreach ($estudiante as $est) {
+
+            $c = 170;
+            $u = $est['materiasAprobadas'];
+
                 $json[] = array(
                     'codigo' => $est['codigo'],
                     'documento' => $est['documento'],
@@ -297,6 +304,7 @@ class DirectorController extends Controller
                     'promedio' => $est['promedio'],
                     'fecha_pro' => $est['fecha_pro'],
                     'fecha_11' => $est['fecha_11'],
+                    'porcentajeAprobado' => round((($u / $c) * 100),2)
                 );
             }
             $JString = json_encode($json);
@@ -334,6 +342,34 @@ class DirectorController extends Controller
 
             echo 0;
         }
+    }
+
+    public function reportePorcentaje()
+    {
+        $c = 170;//Total de creditos 100% "creo..."
+        $dataEstudiante =Estudiante::join('users', 'estudiantes.documento', '=', 'users.documento')->join('personas', 'personas.documento', '=', 'users.documento')->get();
+
+
+        foreach ($dataEstudiante as $est) {
+
+            $c = 170;
+            $u = $est['materiasAprobadas'];
+            $total = (($u / $c) * 100);
+
+            if($total>10){
+                $ingreso[] = array(
+                    "codigo" => $est['codigo'],
+                    "apellidos" => $est['apellidos'],
+                    "documento" => $est['documento'],
+                    "email" => $est['email'],
+                    "nombres" => $est['nombres']
+                );
+            }
+
+        }
+        $pdf = \PDF::loadView('pdfPro', compact('ingreso'));
+        return $pdf->setPaper('A3','landscape')->stream();
+
     }
 
     //Servicio 5
