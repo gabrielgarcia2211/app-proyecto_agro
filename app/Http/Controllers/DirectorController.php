@@ -353,7 +353,7 @@ class DirectorController extends Controller
         foreach ($dataEstudiante as $est) {
 
             $c = 170;
-            $u = $est['materiasAprobadas'];
+            $u = $est['materiasaprobadas'];
             $total = (($u / $c) * 100);
 
             if($total>10){
