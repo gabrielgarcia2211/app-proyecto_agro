@@ -193,10 +193,10 @@ function cargarLista(tipo){
                 let template = '';
                 tasks.forEach(ta => {
 
-                    if(ta.porcentajeAprobado>10){
-                        porcentaje = `<td style="background: #34ce57; color: white">${ta.porcentajeAprobado + " %"}</td>`;
+                    if(ta.porcentajeaprobado>10){
+                        porcentaje = `<td style="background: #34ce57; color: white">${ta.porcentajeaprobado + " %"}</td>`;
                     }else{
-                        porcentaje = `<td>${ta.porcentajeAprobado+ " %"}</td>`;
+                        porcentaje = `<td>${ta.porcentajeaprobado+ " %"}</td>`;
                     }
 
 

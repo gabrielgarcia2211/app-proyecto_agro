@@ -304,7 +304,7 @@ class DirectorController extends Controller
                     'promedio' => $est['promedio'],
                     'fecha_pro' => $est['fecha_pro'],
                     'fecha_11' => $est['fecha_11'],
-                    'porcentajeAprobado' => round((($u / $c) * 100),2)
+                    'porcentajeaprobado' => round((($u / $c) * 100),2)
                 );
             }
             $JString = json_encode($json);
