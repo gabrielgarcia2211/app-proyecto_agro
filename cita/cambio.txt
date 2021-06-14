@@ -1,0 +1,4 @@
+Se debe cambiar 
+*App.php
+*Config.php
+*main.js
