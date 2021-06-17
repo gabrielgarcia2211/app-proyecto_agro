@@ -290,7 +290,7 @@ class DirectorController extends Controller
         foreach ($estudiante as $est) {
 
             $c = 170;
-            $u = $est['materiasAprobadas'];
+            $u = $est['materiasaprobadas'];
 
                 $json[] = array(
                     'codigo' => $est['codigo'],
@@ -346,7 +346,7 @@ class DirectorController extends Controller
 
     public function reportePorcentaje()
     {
-       
+
         $dataEstudiante =Estudiante::join('users', 'estudiantes.documento', '=', 'users.documento')->join('personas', 'personas.documento', '=', 'users.documento')->get();
         $ingreso = array();
 
