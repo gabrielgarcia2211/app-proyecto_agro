@@ -312,4 +312,14 @@ class EstudianteController extends Controller
         return view('dashboard.estudiante.listarNoticia')->with(compact('data'));
     }
 
+    function viewdetalleNoticia(Request $request){
+       $noticia = Noticia::find($request->id);
+       if(!$noticia){
+           return back();
+       }else{
+           return view('dashboard.estudiante.detalleNoticia')->with(compact('noticia'));
+       }
+
+    }
+
 }

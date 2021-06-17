@@ -47,6 +47,7 @@ Route::post('routes/password/reset', 'Auth\ResetPasswordController@reset')->name
 //RUTAS DE SERVICIO ADMINISTRADOR
 
 Route::group(['prefix' => 'director', 'middleware' => ['auth', 'rol:1']], function() {
+
     Route::get('/principal', 'DirectorController@principal')->name('admin.principal');
     Route::get('/cargaEstudiante', 'DirectorController@cargaEstudiante')->name('admin.carga');
     Route::get('/formato', 'DirectorController@formato')->name('admin.formato');
@@ -93,11 +94,14 @@ Route::group(['prefix' => 'director', 'middleware' => ['auth', 'rol:1']], functi
 
 
 Route::group(['prefix' => 'estudiante', 'middleware' => ['auth', 'rol:2']], function() {
+
+
     Route::get('/principal', 'EstudianteController@viewPrincipal')->name('estudiante.principal');
     Route::get('/oferta', 'EstudianteController@viewOferta')->name('estudiante.oferta');
     Route::get('/actualizar', 'EstudianteController@viewActualizar')->name('estudiante.actualizar');
     Route::get('/eventos', 'EstudianteController@viewEventos')->name('estudiante.eventos');
     Route::get('/noticias', 'EstudianteController@viewListarNoticia')->name('estudiante.noticia');
+
 
 
     Route::get('/tesis', 'EstudianteController@viewTesis')->name('estudiante.tesis');
@@ -107,6 +111,8 @@ Route::group(['prefix' => 'estudiante', 'middleware' => ['auth', 'rol:2']], func
     Route::post('/hojadeVida', 'EstudianteController@guardarHoja')->name('estudiante.hoja');
     Route::post('/hojadeVida/autorizar', 'EstudianteController@autorizar')->name('estudiante.autorizar');
     Route::post('/actualizar', 'EstudianteController@actualizarData')->name('estudiante.actualizar');
+    Route::post('/detalle/noticias/{id}', 'EstudianteController@viewdetalleNoticia')->name('estudiante.detalle.noticia');
+    Route::get('/detalle/noticias/{id}', 'EstudianteController@viewdetalleNoticia')->name('estudiante.detalle.noticia');
 
 });
 

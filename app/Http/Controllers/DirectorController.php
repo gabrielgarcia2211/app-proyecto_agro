@@ -346,13 +346,13 @@ class DirectorController extends Controller
 
     public function reportePorcentaje()
     {
-        $c = 170;//Total de creditos 100% "creo..."
+       
         $dataEstudiante =Estudiante::join('users', 'estudiantes.documento', '=', 'users.documento')->join('personas', 'personas.documento', '=', 'users.documento')->get();
         $ingreso = array();
 
         foreach ($dataEstudiante as $est) {
 
-            $c = 170;
+            $c = 170;//Total de creditos 100% "creo..."
             $u = $est['materiasaprobadas'];
             $total = (($u / $c) * 100);
 

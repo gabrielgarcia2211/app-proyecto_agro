@@ -20,9 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f98c37c-3026-4cdb-b18c-33ea1217121a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/detalleNoticia.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/director/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/director/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EstudianteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EstudianteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/estudiante/listarNoticia.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,11 +186,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/estudiante" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\proyecto_agro\resources\views\dashboard\estudiante" />
       <recent name="D:\laragon\www\proyecto_agro\resources\views" />
     </key>
   </component>
@@ -222,7 +229,12 @@
       <workItem from="1620087426135" duration="20000" />
       <workItem from="1620912772297" duration="2024000" />
       <workItem from="1620949604540" duration="151000" />
-      <workItem from="1621521537692" duration="445000" />
+      <workItem from="1621521537692" duration="1385000" />
+      <workItem from="1622729691178" duration="4116000" />
+      <workItem from="1622766135504" duration="50000" />
+      <workItem from="1623332713266" duration="2665000" />
+      <workItem from="1623888649131" duration="3355000" />
+      <workItem from="1623941741536" duration="1082000" />
     </task>
     <servers />
   </component>
@@ -242,10 +254,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620949766293">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622766188070">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620949766293" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622766188070" />
+    <state x="540" y="175" key="editAsTableFormatDialogDimension" timestamp="1623942009246">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="175" key="editAsTableFormatDialogDimension/0.0.1920.1040@0.0.1920.1040" timestamp="1623942009246" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1622733128580">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622733128580" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1619706068215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

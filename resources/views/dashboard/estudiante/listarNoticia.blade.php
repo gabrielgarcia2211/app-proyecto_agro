@@ -33,7 +33,12 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{$data[$j]->titulo}}</h5>
                                             <p class="card-text"><span style="color:blue; font-family: Nunito, sans-serif">Autor: </span> {{$data[$j]->autor}}</p>
-                                            <p  class="card-text"><span style="color:blue; font-family: Nunito, sans-serif">Noticia: </span> {{$data[$j]->noticia}}</p>
+                                            <div>
+                                                <form id="formu-detalle-noticia" action="{{route('estudiante.detalle.noticia', [$data[$j]->id])}}"  method="POST">
+                                                    @csrf
+                                                    <button class="btn btn-info" >Ir</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

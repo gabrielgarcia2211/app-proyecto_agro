@@ -12,7 +12,7 @@ class User extends Authenticatable
     protected $primaryKey = 'codigo';
     protected $table = 'users';
 
-    protected $fillable = ['codigo', 'documento','email','email_verified_at' ,'password','remember_token', 'rol','session'];
+    protected $fillable = ['codigo', 'documento','email','email_verified_at' ,'password','remember_token', 'rol','session_id'];
 
 
     public function role(){
