@@ -15,8 +15,8 @@ class CreateEstudiantesTable extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('documento')->unique();
-            $table->tinyInteger('egresado')->nullable();;
+            $table->bigInteger('documento')->unique()->nullable();
+            $table->tinyInteger('egresado')->nullable();
             $table->integer('semestreCursado');
             $table->integer('materiasAprobadas');
             $table->double('promedio');
@@ -24,9 +24,9 @@ class CreateEstudiantesTable extends Migration
             $table->date('fechaegreso')->nullable();
             $table->integer('id_historial')->nullable();
             $table->timestamps();
-            $table->foreign('documento')
+            /* $table->foreign('documento')
                 ->references('documento')
-                ->on('users')->onDelete('cascade')->onUpdate('cascade');
+                ->on('users')->onDelete('cascade')->onUpdate('cascade'); */
 
         });
     }

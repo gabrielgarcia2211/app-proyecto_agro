@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Imports;
 
 use App\Historial;
@@ -19,9 +20,9 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
 
-class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailure,WithChunkReading,WithBatchInserts
+class UsersImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, WithChunkReading, WithBatchInserts
 {
-    use Importable,SkipsFailures, SkipsErrors;
+    use Importable, SkipsFailures, SkipsErrors;
     /**
      * @param array $row
      *
@@ -54,14 +55,14 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
 
         $estudiante = new Estudiante();
 
-        $estudiante->documento=$row['cedula'];
-        $estudiante->egresado=0;
-        $estudiante->semestrecursado=$row['semestre_cursado'];
-        $estudiante->materiasaprobadas=$row['materias_aprobadas'];
-        $estudiante->promedio=$row['promedio'];
-        $estudiante->fechaingreso =\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_ingreso']);
-        $estudiante->fechaegreso =(isset($row['fecha_egreso']))?\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_egreso']):null;
-        $estudiante->id_historial=null;
+        $estudiante->documento = $row['cedula'];
+        $estudiante->egresado = 0;
+        $estudiante->semestrecursado = $row['semestre_cursado'];
+        $estudiante->materiasaprobadas = $row['materias_aprobadas'];
+        $estudiante->promedio = $row['promedio'];
+        $estudiante->fechaingreso = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_ingreso']);
+        $estudiante->fechaegreso = (isset($row['fecha_egreso'])) ? \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_egreso']) : null;
+        $estudiante->id_historial = null;
         $estudiante->save();
 
 
@@ -73,7 +74,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
             'sociales_ciudadanas' => $row['sociales_11'],
             'naturales' => $row['naturales'],
             'ingles' => $row['ingles_11'],
-            'fecha' => (isset($row['fecha_11']))?\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_11']):null
+            'fecha' => (isset($row['fecha_11'])) ? \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_11']) : null
         ]);
 
         SaberPro::create([
@@ -83,7 +84,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
             'competencias_ciudadana' => $row['sociales'],
             'comunicacion_escrita' => $row['comunicacion'],
             'ingles' => $row['ingles'],
-            'fecha' => (isset($row['fecha_pro']))?\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_pro']):null
+            'fecha' => (isset($row['fecha_pro'])) ? \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['fecha_pro']) : null
         ]);
 
         Historial::create([
@@ -91,7 +92,6 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
             'idsaber11' => $row['id_icfes11'],
             'documento' => $row['cedula'],
         ]);
-
     }
 
     public function rules(): array
@@ -140,7 +140,4 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation,SkipsOnFailur
     {
         return 2;
     }
-
-
-
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSaber11sTable extends Migration
+class CreateSaberProsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateSaber11sTable extends Migration
      */
     public function up()
     {
-        Schema::create('saber11s', function (Blueprint $table) {
-            $table->integer('idsaber11')->primary();
+        Schema::create('saber_pros', function (Blueprint $table) {
+            $table->integer('idsaberpro')->primary();
             $table->integer('lectura_critica');
-            $table->integer('matematicas');
-            $table->integer('sociales_ciudadanas');
-            $table->integer('naturales');
+            $table->integer('razonamiento_cuantitativo');
+            $table->integer('competencias_ciudadana');
+            $table->integer('comunicacion_escrita');
             $table->integer('ingles');
+            $table->string('fecha')->nullable();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -30,6 +32,6 @@ class CreateSaber11sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saber11s');
+        Schema::dropIfExists('saber_pros');
     }
 }
