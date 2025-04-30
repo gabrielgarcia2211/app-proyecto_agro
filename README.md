@@ -1,7 +1,7 @@
 
 # **Control de Egresados - Universidad Francisco de Paula Santander** 🎓
 
-![Logo UFPS](https://inscripciones.ufps.edu.co/assets/img/template/logo_solo.png)
+<img src="https://ww2.ufps.edu.co/public/archivos/elementos_corporativos/Logo-vertical.jpg" alt="Description" width="500" height="300">
 
 ## **Descripción** 📜
 Este proyecto es una **herramienta de control de egresados** del programa de **Ingeniería Agroindustrial** de la **Universidad Francisco de Paula Santander (UFPS)**. Centraliza información relevante sobre los egresados, como publicaciones de empleos, rendimiento en pruebas Saber, y el impacto de los egresados en la comunidad y la región. Alineado con la **misión y visión** del programa, el sistema facilita la gestión de esta información y contribuye al desarrollo de la región.
